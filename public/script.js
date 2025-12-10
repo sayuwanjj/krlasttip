@@ -1,7 +1,6 @@
 const API_URL = 'http://localhost:3000/api';
 let currentEditId = null;
 
-// Загрузить новости при загрузке страницы
 document.addEventListener('DOMContentLoaded', loadNews);
 
 async function loadNews() {
@@ -188,7 +187,6 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-// Закрытие модального окна по клику на фон
 window.onclick = function(event) {
     const modal = document.getElementById('editModal');
     if (event.target == modal) {

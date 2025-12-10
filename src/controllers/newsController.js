@@ -1,6 +1,5 @@
 import * as newsService from '../services/newsService.js';
 
-// GET все посты
 export const getAllNews = (req, res) => {
     try {
         const category = req.query.category;
@@ -16,7 +15,6 @@ export const getAllNews = (req, res) => {
     }
 };
 
-// GET один пост по ID
 export const getNewsById = (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -32,7 +30,6 @@ export const getNewsById = (req, res) => {
     }
 };
 
-// POST создать пост
 export const createNews = (req, res) => {
     try {
         const { title, content, category, image } = req.body;
@@ -56,7 +53,6 @@ export const createNews = (req, res) => {
     }
 };
 
-// PUT обновить пост
 export const updateNews = (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -79,11 +75,9 @@ export const updateNews = (req, res) => {
     }
 };
 
-// DELETE удалить пост (изменена функция на deleteNews)
 export const deleteNews = (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        // ✅ ИСПРАВЛЕНО: вызов newsService.deleteNews вместо newsService.delete
         const success = newsService.deleteNews(id);
         
         if (!success) {

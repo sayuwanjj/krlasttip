@@ -1,4 +1,3 @@
-// Хранилище постов
 let news = [
     {
         id: 1,
@@ -64,7 +63,6 @@ export const update = (id, newsData) => {
     return post;
 };
 
-// ✅ ИСПРАВЛЕНО: переименовано с delete на deleteNews
 export const deleteNews = (id) => {
     const index = news.findIndex(item => item.id === id);
     

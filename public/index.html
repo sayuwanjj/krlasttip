@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📰 Новостная лента</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📰 Новостная лента</h1>
+            <p>Управление новостями и публикациями</p>
+        </header>
+
+        <div class="content">
+            <!-- Форма создания -->
+            <div class="form-section">
+                <h2>✍️ Добавить новость</h2>
+                
+                <div class="form-group">
+                    <label for="newsTitle">Заголовок *</label>
+                    <input type="text" id="newsTitle" placeholder="Введите заголовок новости" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="newsContent">Содержание *</label>
+                    <textarea id="newsContent" placeholder="Напишите содержание новости" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="newsCategory">Категория *</label>
+                    <select id="newsCategory" required>
+                        <option value="">-- Выберите категорию --</option>
+                        <option value="Технология">Технология</option>
+                        <option value="Разработка">Разработка</option>
+                        <option value="Гайды">Гайды</option>
+                        <option value="Новости">Новости</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="newsImage">Иконка/Эмодзи</label>
+                    <input type="text" id="newsImage" placeholder="Например: 📱 или 🚀" maxlength="2">
+                </div>
+
+                <button class="btn-primary" onclick="createNews()">📤 Опубликовать</button>
+                <div id="createMessage" class="message-container"></div>
+            </div>
+
+            <!-- Лента новостей -->
+            <div class="news-section">
+                <h2>📋 Новости</h2>
+                
+                <div class="filter-group">
+                    <label for="filterCategory">Фильтр:</label>
+                    <select id="filterCategory" onchange="loadNews()">
+                        <option value="">Все категории</option>
+                        <option value="Технология">Технология</option>
+                        <option value="Разработка">Разработка</option>
+                        <option value="Гайды">Гайды</option>
+                        <option value="Новости">Новости</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+
+                <div id="newsList" class="news-list">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Загрузка новостей...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal для редактирования -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>✏️ Редактировать новость</h2>
+            
+            <div class="form-group">
+                <label for="editTitle">Заголовок *</label>
+                <input type="text" id="editTitle" required>
+            </div>
+
+            <div class="form-group">
+                <label for="editContent">Содержание *</label>
+                <textarea id="editContent" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="editCategory">Категория *</label>
+                <select id="editCategory" required>
+                    <option value="Технология">Технология</option>
+                    <option value="Разработка">Разработка</option>
+                    <option value="Гайды">Гайды</option>
+                    <option value="Новости">Новости</option>
+                    <option value="Другое">Другое</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="editImage">Иконка/Эмодзи</label>
+                <input type="text" id="editImage" maxlength="2">
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn-primary" onclick="saveEdit()">💾 Сохранить</button>
+                <button class="btn-secondary" onclick="closeEditModal()">❌ Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
